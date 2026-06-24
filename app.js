@@ -22,8 +22,7 @@ app.use(cookieParser())
 // connect DB
 mongoose.connect(process.env.DATABASE_URI)
   .then((result) => {
-    app.listen(3000);
-    console.log('listening at 3000');
+    console.log('connected to DB');
   })
   .catch((err) => console.log(err));
 

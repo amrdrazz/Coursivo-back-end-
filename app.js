@@ -36,6 +36,11 @@ app.post('/login', authControllers.login);
 app.get('/auth-me', authMiddleware, (req, res) => {
   res.json({
     authenticated: true,
-    user: req.user
-  })
+    user: {
+      _id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+      enrolledCourses: req.user.enrolledCourses
+    }
+  });
 });

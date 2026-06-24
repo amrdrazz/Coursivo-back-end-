@@ -1,0 +1,45 @@
+require('dotenv').config()
+const express = require('express');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+
+const authControllers = require('./controllers/authControllers');
+const authMiddleware = require('./middleware/authMinddleware')
+
+const app = express();
+
+const cors = require('cors');
+
+app.use(cors({
+  origin: ["http://localhost:5173", "https://coursivo-sigma.vercel.app/"],
+  credentials: true
+}));
+
+// middleware
+app.use(express.json());
+app.use(cookieParser())
+
+// connect DB
+mongoose.connect(process.env.DATABASE_URI)
+  .then((result) => {
+    app.listen(3000);
+    console.log('listening at 3000');
+  })
+  .catch((err) => console.log(err));
+
+// routes
+
+
+app.get('/', (req, res) => {
+  res.render('./views/aocs.html');
+});
+
+app.post('/signup', authControllers.signup);
+app.post('/verify', authControllers.verify);
+app.post('/login', authControllers.login);
+app.get('/auth-me', authMiddleware, (req, res) => {
+  res.json({
+    authenticated: true,
+    user: req.user
+  })
+})

@@ -30,10 +30,6 @@ mongoose.connect(process.env.DATABASE_URI)
 // routes
 
 
-app.get('/', (req, res) => {
-  res.render('./views/aocs.html');
-});
-
 app.post('/signup', authControllers.signup);
 app.post('/verify', authControllers.verify);
 app.post('/login', authControllers.login);

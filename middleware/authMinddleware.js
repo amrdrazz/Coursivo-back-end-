@@ -9,8 +9,12 @@ const checkUser = async (req, res, next) => {
         }
 
         const decoded = JWT.verify(token, process.env.JWT_SECRET);
-        const user = await User.findOne({ id: decoded.id })
-        req.user = user;
+        const user = await User.findOne({ _id: decoded.id });
+        if (user){
+            req.user = user;
+        }else{
+            console.log(decoded)
+        }
 
         next()
     }catch(err){

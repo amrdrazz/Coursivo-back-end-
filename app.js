@@ -11,7 +11,7 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://coursivo-sigma.vercel.app/"],
+  origin: ["http://localhost:5173", "https://coursivo-sigma.vercel.app"],
   credentials: true
 }));
 
@@ -38,4 +38,4 @@ app.get('/auth-me', authMiddleware, (req, res) => {
     authenticated: true,
     user: req.user
   })
-})
+});

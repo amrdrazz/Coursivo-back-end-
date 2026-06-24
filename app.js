@@ -43,3 +43,6 @@ app.get('/auth-me', authMiddleware, (req, res) => {
     }
   });
 });
+
+
+module.exports = app;

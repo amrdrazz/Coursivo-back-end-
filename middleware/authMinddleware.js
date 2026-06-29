@@ -13,12 +13,13 @@ const checkUser = async (req, res, next) => {
         if (user){
             req.user = user;
         }else{
-            console.log(decoded)
+            console.log(decoded);
+            return;
         }
 
-        next()
+        next();
     }catch(err){
-        return res.status(401).json({ message: 'Invalid token' })
+        return res.status(401).json({ message: 'Invalid token' });
     }
 }
 

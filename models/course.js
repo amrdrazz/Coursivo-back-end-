@@ -28,7 +28,7 @@ const courseSchema = new Schema({
         required: true
     },
     enrolledUsers: {
-        type: String,
+        type: Array,
         required: true
     },
     certificate: {
@@ -40,7 +40,7 @@ const courseSchema = new Schema({
         required: true
     },
     totalHours: {
-        type: string,
+        type: String,
         required: true
     },
     level: {

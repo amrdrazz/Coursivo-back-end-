@@ -20,6 +20,12 @@ const userSchema = new Schema({
         required: [true, 'Password is required'],
         minlength: [6, 'Minimum password length is 6 characters']
     },
+    country: {
+        type: String
+    },
+    about: {
+        type: String
+    },
     enrolledCourses: {
         type: Array
     },
